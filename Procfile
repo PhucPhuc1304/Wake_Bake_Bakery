@@ -1,1 +1,2 @@
-web: gunicorn thien_anh.wsgi --log-file -
+web: gunicorn bakery.wsgi --log-file -
+
