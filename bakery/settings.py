@@ -10,20 +10,18 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+
+
 from pathlib import Path
-import os
 import os
 
 # ...
 
-# Static files (CSS, JavaScript, images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
-
 # Heroku: Update to allow serving static files on Heroku
 import django_heroku
 django_heroku.settings(locals())
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
