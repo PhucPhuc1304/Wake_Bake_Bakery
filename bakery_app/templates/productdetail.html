@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!--================End Main Header Area =================-->
+<section class="banner_area">
+    <div class="container">
+        <div class="banner_text">
+            <h3>Product Details</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="product-details.html">Product Details</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!--================End Main Header Area =================-->
+
+<!--================Product Details Area =================-->
+<section class="product_details_area p_100">
+    <div class="container">
+        <div class="row product_d_price">
+            <div class="col-lg-6">
+                <div class="product_img">
+                    <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="product_details_text">
+                    <a href="{% url 'productdetail' product.id %}">
+                        <h4>{{ product.name }}</h4>
+                        <p>{{ product.description }}</p>
+                        <h5>Price: <span>${{ product.price }}</span></h5>
+                        <div class="quantity_box">
+                            <label for="quantity">Quantity :</label>
+                            <input type="text" placeholder="1" id="quantity">
+                        </div>
+                        <a class="pink_more" href="#">Add to Cart</a>
+                    </a>
+                </div>
+            </div>
+            <div class="product_tab_area" style="padding: 30px;">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home"
+                           role="tab" aria-controls="nav-home" aria-selected="true">Description</a>
+                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
+                           role="tab" aria-controls="nav-profile" aria-selected="false">Specification</a>
+                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
+                           role="tab" aria-controls="nav-contact" aria-selected="false">Review ({{ product.reviews
+                            }})</a>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <p>{{ product.description }}</p>
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <p>{{ product.specifications }}</p>
+                    </div>
+                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                        <p>{{ product.specifications }}</p>
+                        <p>{{ product.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--================End Product Details Area =================-->
+
+<section class="similar_product_area p_100">
+    <div class="container">
+        <div class="main_title">
+            <h2>Similar Products</h2>
+        </div>
+        <div class="row similar_product_inner">
+            {% for similar_product in product_similar %}
+            <div class="col-lg-3 col-md-4 col-6">
+                <div class="cake_feature_item">
+                    <div class="cake_img">
+                        <img src="{{ similar_product.image.url }}" alt="{{ similar_product.name }} "
+                             style="height: 270px;">
+                    </div>
+                    <div class="cake_text">
+                        <h4>${{ similar_product.price }}</h4>
+                        <a href="{% url 'productdetail' similar_product.id %}">
+                            <h3>{{ similar_product.name }}</h3>
+                        </a> <a class="pest_btn" href="#">Add to cart</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!--================End Similar Product Area =================-->
+{% endblock %}
+
