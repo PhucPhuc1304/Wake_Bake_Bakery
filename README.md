@@ -16,7 +16,7 @@ Installation:
 1.  Clone the project:
 
 ```
-git clone https://github.com/bard-ai/django-bakery-project.git
+git clone https://github.com/PhucPhuc1304/Wake_Bake_Bakery.git
 
 ```
 
